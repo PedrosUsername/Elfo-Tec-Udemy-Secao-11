@@ -1,27 +1,39 @@
-# Agenda
+## Angular + Spring Boot: Udemy Fullstack
+## Seção 11: Cadastro e listagem de clientes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
+### Pré-requisitos
+Angular: 12.2.15<br>
+Angular CLI: 12.2.14<br>
+Node: 14.17.6<br>
+Package Manager: npm 6.14.15<br>
+<br>
+@angular-devkit/architect       0.1202.14,
+@angular-devkit/build-angular   12.2.14,
+@angular-devkit/core            12.2.14,
+@angular-devkit/schematics      12.2.14,
+@angular/cli                    12.2.14,
+@schematics/angular             12.2.14,
+rxjs                            6.6.7,
+typescript                      4.3.5,
 
-## Development server
+### Rodando o projeto localmente
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Abra o terminal, e ponha o Front-End para rodar com:
+```
+$ ng serve
+```
+em seguida, ponha o Back-End para rodar com:
+```
+$ ./mvnw spring-boot:run
+```
+Crie um contato acessando, no navegador de sua preferência, a url:
+> 127.0.0.1:4200/
 
-## Code scaffolding
+Veja os contatos criados acessando, no navegador de sua preferência, a url:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+> 127.0.0.1:8080/api/contatos
 
-## Build
+### Observações:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
++ O audio do curso poderia ser melhor
++ Já tinha ouvido falar, mas nunca tinha usado o Angular Material
