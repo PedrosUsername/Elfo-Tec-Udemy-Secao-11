@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/contatos")
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class ContactController {
 

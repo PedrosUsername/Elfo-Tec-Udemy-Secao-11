@@ -1,0 +1,17 @@
+<mat-toolbar>
+    <span>Meus Contatos</span>
+</mat-toolbar>
+<br>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input formControlName="name" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input formControlName="email" matInput>
+    </mat-form-field>    
+    <br>
+    <button mat-stroked-button color="accent">Accent</button>    
+</form>
