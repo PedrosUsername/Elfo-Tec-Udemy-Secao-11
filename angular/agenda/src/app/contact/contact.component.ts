@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ContactService } from '../contact.service';
+import { DetailsComponent } from '../details/details.component';
 import { Contact } from './contact';
 
 @Component({
@@ -15,7 +17,8 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private service: ContactService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +55,14 @@ export class ContactComponent implements OnInit {
   favoriting(contact: Contact){
     this.service.favorite(contact).subscribe(response => {
       contact.favorite = !contact.favorite;
+    })
+  }
+
+  visualize(contact: Contact){
+    this.dialog.open( DetailsComponent, {
+      width: '400px',
+      height: '450px',
+      data: contact
     })
   }
 

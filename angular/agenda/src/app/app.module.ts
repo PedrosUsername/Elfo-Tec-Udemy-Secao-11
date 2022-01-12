@@ -13,6 +13,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 import { ContactComponent } from './contact/contact.component'
 import { ContactService } from './contact.service';
@@ -39,6 +40,7 @@ import { DetailsComponent } from './details/details.component';
     MatTableModule,
     MatIconModule,
     MatCardModule,
+    MatDialogModule,
 
     BrowserAnimationsModule
   ],

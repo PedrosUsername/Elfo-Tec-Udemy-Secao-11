@@ -36,5 +36,8 @@ Veja os contatos criados acessando, no navegador de sua preferência, a url:
 ### Observações:
 
 + O audio do curso poderia ser melhor
-+ Já tinha ouvido falar, mas eu nunca tinha usado o Angular Material
++ Já tinha ouvido falar, mas eu nunca tinha usado o Angular Material.
++ Apresentação de componentes diversos do A. Material
++ Reactive forms!
++ Upload de imagens!
 + Anotei algo que achei interessante em 'contact/contact.component.ts'
