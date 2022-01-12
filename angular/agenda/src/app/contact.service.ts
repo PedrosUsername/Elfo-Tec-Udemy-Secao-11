@@ -17,4 +17,9 @@ export class ContactService {
   save(contato: Contact): Observable<Contact> {
     return this.http.post<Contact>(this.url, contato);
   }
+
+  list(): Observable<Contact[]> {
+
+    return this.http.get<any>(this.url);
+  }
 }

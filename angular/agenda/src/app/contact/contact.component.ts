@@ -9,6 +9,7 @@ import { Contact } from './contact';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  colunas = ['id', 'nome', 'email', 'favorito'];
   form!: FormGroup;
   contacts: Contact[] = [];
 
@@ -19,6 +20,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this._montarFormulario();
+    this._listarContatos()
   }
 
   submit(){
@@ -30,6 +32,15 @@ export class ContactComponent implements OnInit {
     } );
   }
 
+  favorite(contato: Contact){
+
+  }
+
+  _listarContatos(){
+    this.service.list().subscribe(response => {
+      this.contacts = response;
+    })
+  }
 
   _montarFormulario(){
     this.form = this.fb.group({
