@@ -9,7 +9,7 @@ import { Contact } from './contact';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  colunas = ['id', 'nome', 'email', 'favorito'];
+  colunas = ['foto', 'id', 'nome', 'email', 'favorito'];
   form!: FormGroup;
   contacts: Contact[] = [];
 
@@ -27,13 +27,32 @@ export class ContactComponent implements OnInit {
     const formValues = this.form.value;
     const contato: Contact = new Contact(formValues.name, formValues.email);
     this.service.save(contato).subscribe( response => {
-      this.contacts.push(response);
-      console.log(this.contacts);
+//    Interessante... Atualizando o atributo dessa forma, não ativa o Detector de Mudança  
+//    o novo contato só aparece depois de um refresh na pagina.
+//    this.contacts.push(response);
+
+//    Mas dessa forma, ativa, e a pagina nao precisa ser atualizada
+      let l = [ ... this.contacts, response ];
+      this.contacts = l;
     } );
   }
 
-  favorite(contato: Contact){
+  uploadFoto(event: any, contato: any){
+    const files = event.target.files;
+    if(files){
+      const foto = files[0];
+      const formData: FormData = new FormData();
+      formData.append("foto", foto);
+      this.service
+            .upload(contato, formData)
+            .subscribe(response => this._listarContatos());
+    }
+  }
 
+  favoriting(contact: Contact){
+    this.service.favorite(contact).subscribe(response => {
+      contact.favorite = !contact.favorite;
+    })
   }
 
   _listarContatos(){

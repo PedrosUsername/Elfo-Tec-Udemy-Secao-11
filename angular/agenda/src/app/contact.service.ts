@@ -22,4 +22,12 @@ export class ContactService {
 
     return this.http.get<any>(this.url);
   }
+
+  favorite(contato: Contact): Observable<any> {
+    return this.http.patch( `${this.url}/${contato.id}/favorito`, null );
+  }
+
+  upload(contato: Contact, formData: FormData): Observable<any> {
+    return this.http.put(`${this.url}/${contato.id}/foto`, formData, { responseType : 'blob'} );
+  }
 }

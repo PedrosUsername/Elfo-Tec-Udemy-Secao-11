@@ -22,4 +22,8 @@ public class Contact {
     private String email;
     @Column
     private Boolean favorite;
+
+    @Lob
+    @Column
+    private byte[] pic;
 }

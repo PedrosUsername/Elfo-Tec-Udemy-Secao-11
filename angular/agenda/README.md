@@ -36,4 +36,5 @@ Veja os contatos criados acessando, no navegador de sua preferência, a url:
 ### Observações:
 
 + O audio do curso poderia ser melhor
-+ Já tinha ouvido falar, mas nunca tinha usado o Angular Material
++ Já tinha ouvido falar, mas eu nunca tinha usado o Angular Material
++ Anotei algo que achei interessante em 'contact/contact.component.ts'

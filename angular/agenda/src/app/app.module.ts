@@ -17,12 +17,14 @@ import { MatCardModule } from '@angular/material/card';
 import { ContactComponent } from './contact/contact.component'
 import { ContactService } from './contact.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent
+    ContactComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

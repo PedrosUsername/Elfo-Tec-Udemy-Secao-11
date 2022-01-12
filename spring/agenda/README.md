@@ -38,3 +38,4 @@ $ curl -i -X PATCH localhost:8080/api/contatos/{ID_CONTATO}/favorito
 ### Observações:
 
 + O audio do curso poderia ser melhor
++ As diretivas PUT e PATCH são perigosamente semelhantes

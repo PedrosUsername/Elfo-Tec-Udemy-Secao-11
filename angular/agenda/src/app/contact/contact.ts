@@ -4,7 +4,7 @@ export class Contact {
     name: string;
     email: string;
     favorite!: boolean;
-    foto: any;
+    pic: any;
 
     constructor(name: string, email: string){
         this.name = name;
