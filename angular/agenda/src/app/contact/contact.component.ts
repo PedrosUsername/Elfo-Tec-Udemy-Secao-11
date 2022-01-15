@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { ContactService } from '../contact.service';
 import { DetailsComponent } from '../details/details.component';
 import { Contact } from './contact';
@@ -15,6 +16,11 @@ export class ContactComponent implements OnInit {
   form!: FormGroup;
   contacts: Contact[] = [];
 
+  totalElementos = 0;
+  pagina = 0;
+  tamanho = 3;
+  pageSizeOptions : number[] = [3]
+
   constructor(
     private service: ContactService,
     private fb: FormBuilder,
@@ -23,7 +29,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this._montarFormulario();
-    this._listarContatos()
+    this._listarContatosPages(0, this.tamanho);
   }
 
   submit(){
@@ -35,8 +41,7 @@ export class ContactComponent implements OnInit {
 //    this.contacts.push(response);
 
 //    Mas dessa forma, ativa, e a pagina nao precisa ser atualizada
-      let l = [ ... this.contacts, response ];
-      this.contacts = l;
+      this._listarContatosPages(0, this.tamanho);
     } );
   }
 
@@ -48,7 +53,7 @@ export class ContactComponent implements OnInit {
       formData.append("foto", foto);
       this.service
             .upload(contato, formData)
-            .subscribe(response => this._listarContatos());
+            .subscribe(response => this._listarContatosPages(this.pagina, this.tamanho));
     }
   }
 
@@ -66,9 +71,26 @@ export class ContactComponent implements OnInit {
     })
   }
 
+  paginar(event: PageEvent){
+    this.pagina = event.pageIndex;
+    this._listarContatosPages(this.pagina, this.tamanho);
+  }
+
   _listarContatos(){
     this.service.list().subscribe(response => {
       this.contacts = response;
+    })
+  }
+  _listarContatosPages( pagina: number, tamanho: number ){
+    this.service.listPages(pagina, tamanho).subscribe(response => {
+      this.contacts = response.content;
+      this.totalElementos = response.totalElements;
+      this.pagina = response.number;
+
+      console.log(this.totalElementos);
+      console.log(this.pagina);
+      console.log(this.tamanho);
+      console.log(this.pageSizeOptions);
     })
   }
 

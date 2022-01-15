@@ -4,6 +4,8 @@ import io.github.pedrosusername.agenda.model.Contact;
 import io.github.pedrosusername.agenda.model.ContactRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +26,15 @@ public class ContactController {
     @GetMapping
     public List<Contact> list(){
         return repository.findAll();
+    }
+
+    @GetMapping("pages")
+    public Page<Contact> listPages(
+            @RequestParam(value = "page", defaultValue = "0")   Integer pagina,
+            @RequestParam(value = "size", defaultValue = "10")  Integer tamanhoPagina
+    ){
+        PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina);
+        return repository.findAll(pageRequest);
     }
 
     @PostMapping
